@@ -1,22 +1,22 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include <stdio.h>
 #include <math.h>
-int main()
-{
-	int a = 0, b = 0;
-	for (a = 1, b = 1; a <= 100; a++)
-	{
-		if (b >= 20) break;
-		if (b % 3 == 1)
-		{
-			b = b + 3;
-			continue;
-		}
-		b = b - 5;
-	}
-	printf("%d\n", a);
-	return 0;
-}
+//int main()
+//{
+//	int a = 0, b = 0;
+//	for (a = 1, b = 1; a <= 100; a++)
+//	{
+//		if (b >= 20) break;
+//		if (b % 3 == 1)
+//		{
+//			b = b + 3;
+//			continue;
+//		}
+//		b = b - 5;
+//	}
+//	printf("%d\n", a);
+//	return 0;
+//}
 
 // 编写程序数一下 1到 100 的所有整数中出现多少个数字9
 //int main() {
@@ -32,17 +32,17 @@ int main()
 //}
 
 // 计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值，打印出结果
-//int main() {
-//	int n = 1;
-//	double sum = 0.0;
-//	double num = 0.0;
-//	for (n = 1; n <= 100; n++) {
-//			num = pow(-1.0, (n - 1.0));  // 在C语言中, 取次方的函数为 double pow(doublex, double y), 头文件为<math.h>
-//			sum = sum + (num * (1.0 / n)); // 只要有一个数是浮点型, 那么整个计算结果就是浮点型
-//	}
-//	printf("%lf\n", sum);
-//	return 0;
-//}
+int main() {
+	int n = 1;
+	double sum = 0.0;
+	double num = 0.0;
+	for (n = 1; n <= 100; n++) {
+			num = pow(-1.0, (n - 1.0));  // 在C语言中, 取次方的函数为 double pow(doublex, double y), 头文件为<math.h>
+			sum = sum + (num * (1.0 / n)); // 只要有一个数是浮点型, 那么整个计算结果就是浮点型
+	}
+	printf("%lf\n", sum);
+	return 0;
+}
 
 // 求10 个整数中最大值
 //int main() {
