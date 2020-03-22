@@ -19,11 +19,18 @@
 //}
 
 // 编写程序数一下 1到 100 的所有整数中出现多少个数字9
+// 个位: 9 19 29 39 49 59 69 79 89 99
+// 十位: 90 91 92 93 94 95 96 97 98 99
 //int main() {
 //	int i = 1;
 //	int count = 0;
-//	for (; i <= 100; i++) {
+//	for (i = 1; i <= 100; i++) {
+//        // 个位(余数为9)
 //		if (i % 10 == 9) {
+//			count++;
+//		}
+//		// 十位(商为9)
+//		if (i / 10 == 9) {
 //			count++;
 //		}
 //	}
@@ -32,17 +39,17 @@
 //}
 
 // 计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值，打印出结果
-int main() {
-	int n = 1;
-	double sum = 0.0;
-	double num = 0.0;
-	for (n = 1; n <= 100; n++) {
-			num = pow(-1.0, (n - 1.0));  // 在C语言中, 取次方的函数为 double pow(doublex, double y), 头文件为<math.h>
-			sum = sum + (num * (1.0 / n)); // 只要有一个数是浮点型, 那么整个计算结果就是浮点型
-	}
-	printf("%lf\n", sum);
-	return 0;
-}
+//int main() {
+//	int n = 1;
+//	double sum = 0.0;
+//	double num = 0.0;
+//	for (n = 1; n <= 100; n++) {
+//			num = pow(-1.0, (n - 1.0));  // 在C语言中, 取次方的函数为 double pow(doublex, double y), 头文件为<math.h>
+//			sum = sum + (num * (1.0 / n)); // 只要有一个数是浮点型, 那么整个计算结果就是浮点型
+//	}
+//	printf("%lf\n", sum);
+//	return 0;
+//}
 
 // 求10 个整数中最大值
 //int main() {
@@ -60,19 +67,23 @@ int main() {
 //}
 
 // 在屏幕上输出9*9乘法口诀表
-//int main() {
-//	int i = 1;
-//	int j = 1;
-//	int mul = 0;
-//	for (i = 1; i <= 9; i++) {
-//		for (j = i; j <= 9; j++) {
-//			mul = i * j;
-//			printf("%d*%d=%d ", i, j, mul);
-//		}
-//		printf("\n");
-//	}
-//	return 0;
-//}
+// 1*1=1
+// 2*1=2 2*2=4
+// 3*1=3 3*2=6 3*3=9
+// ......
+int main() {
+	int i = 1;
+	// 打印行
+	for (i = 1; i <= 9; i++) {
+		// 列
+		int j = 1;
+		for (j = 1; j <= i; j++) {
+			printf("%d*%d=%-2d ", i, j, i * j);  // 打印了一行
+		}
+		printf("\n");
+	}
+	return 0;
+}
 
 //int main() {
 //	int i = 0;
