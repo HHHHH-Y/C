@@ -34,26 +34,26 @@
 // We####################!!
 // ...
 // Welcome to China!!!!!!!!
-int main() {
-	// 定义两个字符串
-	char arr1[] = "Welcome to China!!!!!!!!";
-	char arr2[] = "########################";
-	int left = 0;
-	int right = strlen(arr1) - 1;    
-	// 也可以使用sizeof, 但是由于初始化的是一个字符串, 字符串的结束标志为'\0'
-	// 因此, 在使用sizeof的时候会算上'\0'的, 因此应该是sizeof(arr) / sizeof(arr[0]) - 2
-	while (left <= right) {
-		arr2[left] = arr1[left];
-		arr2[right] = arr1[right];
-		printf("%s\n", arr2);
-		Sleep(1000);
-		system("cls"); // 清理屏幕信息
-		left++;
-		right--;
-	}
-	printf("%s\n", arr2); // 打印字符串应该使用 %s
-	return 0;
-}
+//int main() {
+//	// 定义两个字符串
+//	char arr1[] = "Welcome to China!!!!!!!!";
+//	char arr2[] = "########################";
+//	int left = 0;
+//	int right = strlen(arr1) - 1;    
+//	// 也可以使用sizeof, 但是由于初始化的是一个字符串, 字符串的结束标志为'\0'
+//	// 因此, 在使用sizeof的时候会算上'\0'的, 因此应该是sizeof(arr) / sizeof(arr[0]) - 2
+//	while (left <= right) {
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//		Sleep(1000);
+//		system("cls"); // 清理屏幕信息
+//		left++;
+//		right--;
+//	}
+//	printf("%s\n", arr2); // 打印字符串应该使用 %s
+//	return 0;
+//}
 
 
 // 如果你引用自己创建的头文件, 就应该用"".  例: #include "stdio.h"
@@ -62,6 +62,37 @@ int main() {
 // goto语句
 // goto语句可以频繁的使用, 但是使用较多会扰乱程序员的思维, 进而会造成很多的麻烦
 // 在大部分情况下, goto语句都可以被C语言中的其他语句替换
-// goto语句的使用
+
+// goto语句的使用(电脑关机程序)
+// shutdown -s -t 60  电脑将会在60秒内自动关机
+// shutdown -a  取消关机
+//int main() {
+//	char input[20] = { 0 };
+//	system("shutdown -s -t 60");
+//	again:
+//	printf("你的电脑将在60内后自动关机, 如果输入: 我真棒, 就取消关机\n");
+//	scanf("%s", input); // 数组名本来就是地址, 因此在这里不需要再使用&
+//	if (0 == strcmp(input, "我真棒")) {
+//		system("shutdown -a");
+//	} else {
+//		goto again;
+//	}
+//	return 0;
+//}
 
 // 用while语句替换goto语句
+int main() {
+	char input[20] = { 0 };
+	system("shutdown -s -t 60");
+	while (1) {
+		printf("你的电脑将在60内后自动关机, 如果输入: 我真棒, 就取消关机\n");
+		scanf("%s", input); // 数组名本来就是地址, 因此在这里不需要再使用&
+		if (0 == strcmp(input, "我真棒")) {
+			system("shutdown -a");
+			break;
+		} 
+	}
+	
+	return 0;
+}
+// 两种方式一模一样
