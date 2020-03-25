@@ -18,5 +18,19 @@
     <ClCompile Include="test.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Add.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sub.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Add.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sub.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

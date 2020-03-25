@@ -119,41 +119,39 @@
 //	return 0;
 //}
 
- 写一个函数, 实现一个整型有序数组的二分查找
-#include <stdio.h>
-
-int Binary_search(int arr[], int k, int sz) {
-	int left = 0;
-	//int right = sizeof(arr) / sizeof(arr[0]) - 1; // int right = 4 / 4 - 1 = 0
-	int right = sz - 1;
-	while (left <= right) {
-		int mid = (left + right) / 2;
-		if (arr[mid] > k) {
-			right = mid - 1;
-		} else if (arr[mid] < k) {
-			left = mid + 1;
-		} else {
-			return mid;
-		}
-	}
-	return -1;
-}
-int main() {
-	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	int k = 0;
-	scanf("%d", &k);
-	int sz = sizeof(arr) / sizeof(arr[0]); // 数组的长度
-	// 调用函数实现二分查找
-	// 数组传参时, 传过去的是一个数组名, 但本质上传过去的是数组中首元素的地址 &arr[0]
-	// 也就是: 数组传参时会发生降级 --> 变成首元素地址
-	int ret = Binary_search(arr, k, sz); // 找到了就返回数组下标, 找不到就返回-1
-	if (ret == -1) {
-		printf("找不到\n");
-	} else {
-		printf("找到了, 下标是%d\n", ret);
-	}
-	return 0;
-}
+// 写一个函数, 实现一个整型有序数组的二分查找
+//int Binary_search(int arr[], int k, int sz) {
+//	int left = 0;
+//	//int right = sizeof(arr) / sizeof(arr[0]) - 1; // int right = 4 / 4 - 1 = 0
+//	int right = sz - 1;
+//	while (left <= right) {
+//		int mid = (left + right) / 2;
+//		if (arr[mid] > k) {
+//			right = mid - 1;
+//		} else if (arr[mid] < k) {
+//			left = mid + 1;
+//		} else {
+//			return mid;
+//		}
+//	}
+//	return -1;
+//}
+//int main() {
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int k = 0;
+//	scanf("%d", &k);
+//	int sz = sizeof(arr) / sizeof(arr[0]); // 数组的长度
+//	// 调用函数实现二分查找
+//	// 数组传参时, 传过去的是一个数组名, 但本质上传过去的是数组中首元素的地址 &arr[0]
+//	// 也就是: 数组传参时会发生降级 --> 变成首元素地址
+//	int ret = Binary_search(arr, k, sz); // 找到了就返回数组下标, 找不到就返回-1
+//	if (ret == -1) {
+//		printf("找不到\n");
+//	} else {
+//		printf("找到了, 下标是%d\n", ret);
+//	}
+//	return 0;
+//}
 
 // 乘法口诀表
 // 实现一个函数, 打印乘法口诀表, 口诀表的行数和列数自己指定
@@ -206,3 +204,20 @@ int main() {
 //	printf("%d", printf("%d", printf("%d", 43))); // 4321
 //	return 0;
 //}
+
+// 函数的声明和定义
+// 函数必须先声明后使用
+// 函数的声明一般要放在头文件中
+
+#include "Add.h"
+#include "Sub.h"
+int main() {
+	int a = 20;
+	int b = 10;
+	// 函数的调用
+	int dif = Sub(a, b);
+	int sum = Add(a, b);
+	printf("sum = %d\n", sum);
+	printf("dif = %d\n", dif);
+	return 0;
+}
