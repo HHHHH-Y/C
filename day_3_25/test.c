@@ -119,41 +119,41 @@
 //	return 0;
 //}
 
-// 写一个函数, 实现一个整型有序数组的二分查找
-//#include <stdio.h>
-//
-//int Binary_search(int arr[], int k, int sz) {
-//	int left = 0;
-//	//int right = sizeof(arr) / sizeof(arr[0]) - 1; // int right = 4 / 4 - 1 = 0
-//	int right = sz - 1;
-//	while (left <= right) {
-//		int mid = (left + right) / 2;
-//		if (arr[mid] > k) {
-//			right = mid - 1;
-//		} else if (arr[mid] < k) {
-//			left = mid + 1;
-//		} else {
-//			return mid;
-//		}
-//	}
-//	return -1;
-//}
-//int main() {
-//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-//	int k = 0;
-//	scanf("%d", &k);
-//	int sz = sizeof(arr) / sizeof(arr[0]); // 数组的长度
-//	// 调用函数实现二分查找
-//	// 数组传参时, 传过去的是一个数组名, 但本质上传过去的是数组中首元素的地址 &arr[0]
-//	// 也就是: 数组传参时会发生降级 --> 变成首元素地址
-//	int ret = Binary_search(arr, k, sz); // 找到了就返回数组下标, 找不到就返回-1
-//	if (ret == -1) {
-//		printf("找不到\n");
-//	} else {
-//		printf("找到了, 下标是%d\n", ret);
-//	}
-//	return 0;
-//}
+ 写一个函数, 实现一个整型有序数组的二分查找
+#include <stdio.h>
+
+int Binary_search(int arr[], int k, int sz) {
+	int left = 0;
+	//int right = sizeof(arr) / sizeof(arr[0]) - 1; // int right = 4 / 4 - 1 = 0
+	int right = sz - 1;
+	while (left <= right) {
+		int mid = (left + right) / 2;
+		if (arr[mid] > k) {
+			right = mid - 1;
+		} else if (arr[mid] < k) {
+			left = mid + 1;
+		} else {
+			return mid;
+		}
+	}
+	return -1;
+}
+int main() {
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int k = 0;
+	scanf("%d", &k);
+	int sz = sizeof(arr) / sizeof(arr[0]); // 数组的长度
+	// 调用函数实现二分查找
+	// 数组传参时, 传过去的是一个数组名, 但本质上传过去的是数组中首元素的地址 &arr[0]
+	// 也就是: 数组传参时会发生降级 --> 变成首元素地址
+	int ret = Binary_search(arr, k, sz); // 找到了就返回数组下标, 找不到就返回-1
+	if (ret == -1) {
+		printf("找不到\n");
+	} else {
+		printf("找到了, 下标是%d\n", ret);
+	}
+	return 0;
+}
 
 // 乘法口诀表
 // 实现一个函数, 打印乘法口诀表, 口诀表的行数和列数自己指定
@@ -180,18 +180,18 @@
 
 // 写一个函数, 每调用一次这个函数, 就会将num的值增加1
 // 调用函数后, num的值会发生改变, 因此应该采用传址调用
-#include <stdio.h>
-void Add(int* p) {  // *p = num
-	(*p)++;
-}
-int main() {
-	int num = 0;
-	Add(&num);
-	printf("num = %d\n", num);
-	Add(&num);
-	printf("num = %d\n", num);
-	return 0;
-}
+//#include <stdio.h>
+//void Add(int* p) {  // *p = num
+//	(*p)++;
+//}
+//int main() {
+//	int num = 0;
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	return 0;
+//}
 
 // 函数的链式访问(把一个函数的返回值作为另一个函数的参数
 //int main() {
