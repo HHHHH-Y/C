@@ -208,7 +208,7 @@
 //}
 
 // 单目操作符
-// !  +  -  &  sizeof  --  ++  *  ()
+// !  +  -  &  sizeof   ~   --  ++  *  ()
 //int main() {
 //	//int flag = 0;
 //	//if (flag) {
@@ -237,8 +237,68 @@
 //	return 0;
 //}
 
-int main() {
-	int a = 0;
-	int arr[10] = { 0 };
+//int main() {
+//	int a = 0;
+//	int arr[10] = { 0 };
+//	//printf("%d\n", sizeof(a)); // 4
+//	//printf("%d\n", sizeof(int)); // 4
+//	//printf("%d\n", sizeof(arr)); // 计算数组的总大小, 单位是字节
+//	//printf("%d\n", sizeof(int[10])); // 去掉数组名, 剩下的就是类型
+//	return 0;
+//}
 
+//int main() {
+//	int a = 10;
+//	short s = 5;
+//	printf("%d\n", sizeof(s = a + 3)); // 2
+//	printf("%d\n", s); // 5
+//	return 0;
+//}
+
+// ~: 对一个二进制数进行按位取反(包括符号位都进行按位取反)
+//int main() {
+//	int a = 14;
+//	// 00000000000000000000000000001110 - 补码(原码)
+//	// 11111111111111111111111111110001 - 补码
+//	// 11111111111111111111111111110000 - 反码
+//	// 10000000000000000000000000001111 - 原码
+//	a = ~a;
+//	printf("%d\n", a); // -15
+//	return 0;
+//}
+
+// 40 10 4 4
+void test1(int arr[]) { // 相当于是指针
+	printf("%d\n", sizeof(arr)); // (3)
 }
+void test2(char ch[]) { // 相当于指针
+	printf("%d\n", sizeof(ch)); // (4)
+}
+int main() {
+	int arr[10] = { 0 };
+	char ch[10] = { 0 };
+	printf("%d\n", sizeof(arr)); // (1)
+	printf("%d\n", sizeof(ch)); // (2)
+	test1(arr); // 传过去的是数组的首元素地址
+	test2(ch); // 同上
+	return 0;
+}
+
+//int main() {
+//	int a = (int) 3.14; // 强制类型转换
+//	printf("%d\n", a); // 3
+//	return 0;
+//}
+
+//int main() {
+//	int a = 5;
+//	//int b = a++;
+//	//printf("%d %d\n", b, a); // 5 6
+//	//int b = ++a;
+//	//printf("%d %d\n", b, a); // 6 6
+//	//int b = a--;
+//	//printf("%d %d\n", b, a); // 5 4
+//	int b = --a;
+//	printf("%d %d\n", b, a); // 4 4
+//	return 0;
+//}
