@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 // 写一个函数, 返回参数二进制(补码)中1的个数
 // 寻找1的个数有四种方法:
 // 1. 一个一个寻找, 直到将二进制序列全部找完
@@ -107,3 +108,106 @@
 //	}
 //	return 0;
 //}
+
+// 野指针
+// 1. 未初始化的局部指针变量(里面存放的是随机值)
+//int main() {
+//	int a = 10;
+//	printf("%d\n", a);
+//	int* p;  // p并未初始化, 所以里面存放的是随机值
+//	*p = 20;
+//	printf("%d\n", a);
+//	return 0;
+//}
+// 2. 指针指向的范围越界
+//int main() {
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int* p = arr;
+//	int i = 0;
+//	for (i = 0; i < 12; i++) { // 数组下标为0 - 9, 没有10, 11. 这时指针指向的数组下标越界, 成了野指针
+//		*(p + i) = 0;
+//	}
+//	return 0;
+//}
+// 3. 指针作为局部变量返回地址后被销毁
+//int* test() {
+//	int a = 10;
+//	return &a;
+//}
+//int main() {
+//	int* p = test();
+//	*p = 20;
+//	return 0;
+//}
+
+// 指针若不知道应该初始化成什么, 或者使用完之后程序还没结束的时候, 就应该定义和赋值为空指针NULL
+//int main() {
+//	int* p = NULL; // 不知道让p指向哪里
+//	int a = 0;
+//	int* pa = &a;
+//	*pa = 10;
+//	printf("%d\n", a);
+//	pa = NULL;
+//	return 0;
+//}
+
+// 指针的运算
+// 指针 +- 整数
+// 指针 - 指针 (指针 - 指针 的绝对值为两个指针之间元素的个数)
+//int main() {
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+//	printf("%d\n", &arr[9] - &arr[0]); // 9
+//	return 0;
+//}
+// 指针的关系运算
+
+// strlen的求法: 1. 循环;  2. 递归;  3. 指针 - 指针
+int my_strlen(char* arr) {
+	char* start = arr;
+	char* end = arr;
+	while (*end != '\0') {
+		end++;
+	}
+	// *end == '\0'
+	return (end - start);
+}
+int main() {
+	char arr[] = "abc";
+	// a  b  c  \0
+	int len = my_strlen(arr);
+	printf("%d\n", len);
+	return 0;
+}
+
+// 数组名的表示
+//int main() {
+//	int arr[10] = { 0 };
+//	printf("%p\n", arr);
+//	printf("%p\n", arr + 1); // 地址+1, 跳过了4个字节
+//	printf("%p\n", &arr[0]);
+//	printf("%p\n", &arr[0] + 1);
+//	printf("%p\n", &arr);
+//	printf("%p\n", &arr + 1); // 地址+1, 跳过了整个数组, 40个字节
+//	return 0;
+//}
+// 对于数组名而言, 数组名就是数组首元素的地址(有两个例外)
+// 1. sizeof(数组名), 这时数组名就为整个数组
+// 2. &数组名, 这时数组名也是整个数组
+
+// 数组可以通过指针来访问
+//int main() {
+//	int arr[10] = { 0 };
+//	int* p = arr;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	for (i = 0; i < sz; i++) {
+//		// 通过下标来访问数组
+//		printf("%d ", *(p + i)); // *(p + i) <--> p[i]
+//		printf("%d ", arr[i]); // *(arr+i) <--> arr[i]
+//		printf("%d ", *(arr + i));
+//		printf("%d ", p[i]);
+//		printf("%d ", i[p]);
+//	}
+//	return 0;
+//}
+
