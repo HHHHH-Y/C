@@ -87,4 +87,41 @@
 //    return 0;
 //}
 
+// typedef - 类型定义/类型重定义
+// 使用typedef将struct Stu进行类型重定义为S
+//typedef struct Stu {
+//	char name[20];
+//	char id[18];
+//	short age;
+//	char sex[5];
+//}S;
+//int main() {
+//	S s = { "张三", "41909020231", 21, "男" };
+//	printf("%s\n", s.name);
+//	printf("%s\n", s.id);
+//	return 0;
+//}
+
 // 结构体传参
+struct Stu {
+	char name[20];
+	char id[18];
+	short age;
+	char sex[5];
+};
+void print(struct Stu tmp) {
+	printf("%s\t%s\t%d\t%s\n", tmp.name, tmp.id, tmp.age, tmp.sex);
+}
+void print1(struct Stu* tmp) {
+	printf("%s\t%s\t%d\t%s\n", tmp->name, tmp->id, tmp->age, tmp->sex);
+}
+int main() {
+	struct Stu s = { "张三", "41909020231", 21, "男" };
+	print(s);
+	print1(&s); // 最佳
+	return 0;
+}
+
+// 函数传参的时候, 参数是需要压栈的. 
+// 如果传递一个结构体对象的时候, 结构体过大,参数压栈的系统开销就会比较大, 所以会导致性能下降
+// 因此在进行结构体传参的时候, 尽可能的传递地址
