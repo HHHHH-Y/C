@@ -2,6 +2,7 @@
 // Debug是可以调试的版本, Release是不可以调试的版本
 // 程序员要是要调试代码, 就需要在Debug版本中进行调试0
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 
 //int test(int x, int y) {
@@ -82,7 +83,6 @@
 //}
 
 // 模拟实现库函数strcpy
-#include <string.h>
 //void my_strcpy(char* dest, char* src) {
 //	while (*src != '\0') {
 //		*dest = *src;
@@ -160,20 +160,81 @@
 //}
 
 // 优化4:
-char*  my_strcpy(char* dest, const char* src) {
-	assert(dest != NULL); // 断言
-	assert(src != NULL); // 断言
-	char* ret = dest; // 将dest的地址存于ret中
-	// 将src指向的字符串拷贝到dest指向的空间中, 包含'\0'
-	while (*dest++ = *src++) {
-		;
-	}
-	return ret;
-}
+//char*  my_strcpy(char* dest, const char* src) {
+//	assert(dest != NULL); // 断言
+//	assert(src != NULL); // 断言
+//	char* ret = dest; // 将dest的地址存于ret中
+//	// 将src指向的字符串拷贝到dest指向的空间中, 包含'\0'
+//	while (*dest++ = *src++) {  
+//		;
+//	}
+//	return ret;
+//}
+//
+//int main() {
+//	char arr1[] = "##########"; 
+//	char arr2[] = "abcdef"; 
+//	printf("%s\n", my_strcpy(arr1, arr2)); // 函数的链式访问
+//	return 0;
+//}
+//
+// 模拟实现库函数strlen
+//int main() {
+//	char str[] = "abcdef";
+//	int len = strlen(str);
+//	printf("%d\n", len);
+//	return 0;
+//}
 
+//int my_strlen(const char* str) {
+//	assert(str != NULL);
+//	int count = 0;
+//	while (*str != '\0') {
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//int main() {
+//	char str[] = "abcdef";
+//	int len = my_strlen(str);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+// 输入一个整数数组
+// 实现一个函数, 来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，所有偶数位于数组的后半部
+void Change(int arr1[], int arr2[], int sz) {
+	int left = 0;
+	int right = sz - 1;
+	int i = 0; 
+	while (left < right) {
+		for (i = 0; i < sz; i++) {
+			if (arr1[i] % 2 == 1) {
+				arr2[left] = arr1[i];
+				left++;
+			} else {
+				arr2[right] = arr1[i];
+				right--;
+			}
+		}
+	}
+}
 int main() {
-	char arr1[] = "##########"; 
-	char arr2[] = "abcdef"; 
-	printf("%s\n", my_strcpy(arr1, arr2)); // 函数的链式访问
+	int arr1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int arr2[10] = { 0 };
+	int sz = sizeof(arr1) / sizeof(arr1[0]);
+	Change(arr1, arr2, sz);
+	int i = 0;
+	for (i = 0; i < sz; i++) {
+		printf("%d ", arr2[i]);
+	}
 	return 0;
 }
+// 在编写代码时, 我们经常产生许多的错误. 通常我们会见到这几种类型的错误
+// 1. 编译错误/语法错误
+//    直接看错误提示信息(双击),用于解决
+// 2. 链接型错误
+//    看错误提示信息, 主要在代码中找到错误信息中的标识符, 然后定位问题所在. 一般是标识符名不存在或者拼写错误
+// 3. 运行时错误
+//    借助调试, 逐步定位问题
